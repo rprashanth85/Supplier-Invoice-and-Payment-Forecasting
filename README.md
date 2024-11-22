@@ -71,9 +71,38 @@ Supplier Specific Invoice Forecasting
  	Created 2 different data frame for each supplier.
   	For supplier 9, basic modeling using applied XGBoost and Prophet and optimzed Prophet with additional features like moving average and relative indexes. 
    	For Supplier 6, tried modeling using SARIMAX and also tried Grid Search CV type (as SARIMAX is not supported using Grid Search we will have to build one)
-    	Results are as below.
+
 
 #### Results
+
+Supplier 9 - Forecasting - No Grid Search CV applied
+
+Basic Modeling 
+XGBoost - RSME: 8741.365078169816
+Prophet - RMSE: 1193.040209585796
+
+<img width="586" alt="Basic Prophet" src="https://github.com/user-attachments/assets/7e824e4b-e67c-4f63-997e-c4b82e0396ed">
+
+
+Optimized Modeling
+Prophet - RMSE: 272.4380126809856
+
+<img width="606" alt="Optimized Prophet" src="https://github.com/user-attachments/assets/b68d8e39-9794-4d6b-a454-9503e0915e2d">
+
+
+
+Supplier 6 - Forecasting - SARIMAX Grid Search CV **kind** applied
+
+This forecasting requires more optimzation. Only used Invoice Amount as of now for modeling. Based on that below are the best parameters and RSME
+
+<img width="584" alt="SARIMAX Wrapper" src="https://github.com/user-attachments/assets/3c99a884-b901-45d2-a70c-03525c886a21">
+
+
+Best Parameters: {'diff': True, 'order': (1, 1, 1), 'seasonal_diff': True, 'seasonal_order': (1, 1, 1, 7)}
+Test RMSE: 308.0244282758301
+
+<img width="570" alt="SARIMAX Test vs Forecast" src="https://github.com/user-attachments/assets/5ca21ed7-3f3a-42e6-9d17-5011ccc1e63d">
+
 
 
 #### Next steps
