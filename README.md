@@ -75,23 +75,25 @@ Supplier Specific Invoice Forecasting
 
 #### Results
 
-Supplier 9 - Forecasting - No Grid Search CV applied
+**Supplier 9 - Forecasting - No Grid Search CV applied**
 
-Basic Modeling 
+**Basic Modeling** 
+
 XGBoost - RSME: 8741.365078169816
 Prophet - RMSE: 1193.040209585796
 
 <img width="586" alt="Basic Prophet" src="https://github.com/user-attachments/assets/7e824e4b-e67c-4f63-997e-c4b82e0396ed">
 
 
-Optimized Modeling
+**Optimized Modeling**
+
 Prophet - RMSE: 272.4380126809856
 
 <img width="606" alt="Optimized Prophet" src="https://github.com/user-attachments/assets/b68d8e39-9794-4d6b-a454-9503e0915e2d">
 
 
 
-Supplier 6 - Forecasting - SARIMAX Grid Search CV **kind** applied
+**Supplier 6 - Forecasting - SARIMAX Grid Search CV **kind** applied**
 
 This forecasting requires more optimzation. Only used Invoice Amount as of now for modeling. Based on that below are the best parameters and RSME
 
