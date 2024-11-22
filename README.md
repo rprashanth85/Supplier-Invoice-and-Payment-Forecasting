@@ -34,6 +34,28 @@ Data Analysis
  <img width="1015" alt="Total Invoice vs Payments Over Time" src="https://github.com/user-attachments/assets/7b72abb1-59a6-4b7a-9d93-7adae12d9595">
 
 
+Created auto correlation plot to access seasonality and trend
+
+
+<img width="1007" alt="Autocorrelation of Daily Invoice Amounts" src="https://github.com/user-attachments/assets/783e2035-b88f-4d0e-9b3b-ddada59abcd6">
+
+
+Inferences
+Non-Stationarity:
+    The slow decay of autocorrelation suggests that the time series is non-stationary.
+    Stationary series typically show autocorrelations that decay quickly to zero or oscillate around zero for higher lags.
+Trend in the Data:
+    The persistent positive autocorrelation indicates that the time series has a trend. This aligns with the earlier plot showing an upward trajectory in invoice amounts.
+Seasonality:
+    There are no clear periodic spikes in autocorrelation at fixed lags, so strong seasonality is not immediately apparent. However, other methods like Fourier transformations or decomposition might be needed for detailed seasonal analysis.
+
+As a next step started analysing payment trends, residuals and stationarity, etc. Clearly there are seasonal and trend patterns available in the data. Applied ACF and PACF on Payment Amount to make the data stationary. I also did the seasonal decomposition using additive model but the standard deviation and MAE results were better for multiplicative model decomposition.  
+
+![Multiplicative Decomposition](https://github.com/user-attachments/assets/411e3b9e-1519-4ea1-a621-ca4207ee725d)
+
+<img width="790" alt="Comparison of Residuals " src="https://github.com/user-attachments/assets/f3d28a44-d001-4812-830c-aac7299d9a15">
+
+<img width="291" alt="ACF and PACF" src="https://github.com/user-attachments/assets/444d9116-fb16-494f-8271-70a89afdadee">
 
 
 Data Modeling
