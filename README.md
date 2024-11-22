@@ -61,10 +61,12 @@ As a next step started analysing payment trends, residuals and stationarity, etc
 Data Modeling
 
 Payment Modeling
+
 	Performed couple of basic modeling with ARIMA and Prophet. For this basic analysis I just used Amount and Date for a daily period.
  	Performed another of basic modeling with ARIMA for the same features with 12 month period.
 
 Supplier Specific Invoice Forecasting
+
 	Based on Supplier Invoice Amount distribution noticed that Supplier 9 with hight trends and Supplier 6 with less trend or seasonal comparatively. 
  	Created 2 different data frame for each supplier.
   	For supplier 9, basic modeling using applied XGBoost and Prophet and optimzed Prophet with additional features like moving average and relative indexes. 
@@ -72,7 +74,7 @@ Supplier Specific Invoice Forecasting
     	Results are as below.
 
 #### Results
-What did your research find?
+
 
 #### Next steps
 1) Optimizing supplier specific forecasting using SARIMAX by introducing moving averages and other factors.
