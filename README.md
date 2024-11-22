@@ -80,6 +80,7 @@ Supplier Specific Invoice Forecasting
 **Basic Modeling** 
 
 XGBoost - RSME: 8741.365078169816
+
 Prophet - RMSE: 1193.040209585796
 
 <img width="586" alt="Basic Prophet" src="https://github.com/user-attachments/assets/7e824e4b-e67c-4f63-997e-c4b82e0396ed">
