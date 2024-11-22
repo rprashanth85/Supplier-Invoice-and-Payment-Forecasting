@@ -25,12 +25,14 @@ What methods are you using to answer the question?
 What did your research find?
 
 #### Next steps
-What suggestions do you have for next steps?
+1) Optimizing supplier specific forecasting using SARIMAX by introducing moving averages and other factors.
+2) Explore Supplier Payment forecasting using SARIMAX and optimizing Prophet model.
+3) Improve model accuracy using RSME or MAE and avoid over fitting.
+4) Use Validation set and explore the optimzed forecasting models for Supplier Invoices and Payments.
 
 #### Outline of project
 
-
-
+[Initial Report and EDA.ipynb](https://github.com/rprashanth85/Supplier-Invoice-and-Payment-Forecasting)
 
 
 ##### Contact and Further Information
