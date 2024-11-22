@@ -61,15 +61,15 @@ As a next step started analysing payment trends, residuals and stationarity, etc
 Data Modeling
 
 Payment Modeling
-	1) Performed couple of basic modeling with ARIMA and Prophet. For this basic analysis I just used Amount and Date for a daily period.
- 	2) Performed another of basic modeling with ARIMA for the same features with 12 month period.
+	Performed couple of basic modeling with ARIMA and Prophet. For this basic analysis I just used Amount and Date for a daily period.
+ 	Performed another of basic modeling with ARIMA for the same features with 12 month period.
 
 Supplier Specific Invoice Forecasting
-	1) Based on Supplier Invoice Amount distribution noticed that Supplier 9 with hight trends and Supplier 6 with less trend or seasonal comparatively. 
- 	2) Created 2 different data frame for each supplier.
-  	3) For supplier 9, basic modeling using applied XGBoost and Prophet and optimzed Prophet with additional features like moving average and relative indexes. 
-   	4) For Supplier 6, tried modeling using SARIMAX and also tried Grid Search CV type (as SARIMAX is not supported using Grid Search we will have to build one)
-    	5) Results are as below.
+	Based on Supplier Invoice Amount distribution noticed that Supplier 9 with hight trends and Supplier 6 with less trend or seasonal comparatively. 
+ 	Created 2 different data frame for each supplier.
+  	For supplier 9, basic modeling using applied XGBoost and Prophet and optimzed Prophet with additional features like moving average and relative indexes. 
+   	For Supplier 6, tried modeling using SARIMAX and also tried Grid Search CV type (as SARIMAX is not supported using Grid Search we will have to build one)
+    	Results are as below.
 
 #### Results
 What did your research find?
