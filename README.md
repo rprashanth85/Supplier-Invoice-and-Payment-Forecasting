@@ -24,13 +24,14 @@ Data Creation
 
 Data Analysis
 	As the data is synthetic there is no null values. Also normalized across. That is clear from the plots below. 
- 	<img width="1017" alt="Invoice Amount Over Time by Supplier" src="https://github.com/user-attachments/assets/5bc514c3-7ed2-4e4c-8c98-0689c9a14e7e">
+ 
+ <img width="1017" alt="Invoice Amount Over Time by Supplier" src="https://github.com/user-attachments/assets/5bc514c3-7ed2-4e4c-8c98-0689c9a14e7e">
 
-   	<img width="1015" alt="Invoice Amount Distribution by Supplier" src="https://github.com/user-attachments/assets/41ba6114-c60b-455f-8775-5fe151696a6b">
+<img width="1015" alt="Invoice Amount Distribution by Supplier" src="https://github.com/user-attachments/assets/41ba6114-c60b-455f-8775-5fe151696a6b">
 
-	<img width="1018" alt="Count of Payment and Status by Payee" src="https://github.com/user-attachments/assets/81cd8d8f-7d14-46c7-bd33-15c3ef731a4a">
+<img width="1018" alt="Count of Payment and Status by Payee" src="https://github.com/user-attachments/assets/81cd8d8f-7d14-46c7-bd33-15c3ef731a4a">
 
- 	<img width="1015" alt="Total Invoice vs Payments Over Time" src="https://github.com/user-attachments/assets/7b72abb1-59a6-4b7a-9d93-7adae12d9595">
+ <img width="1015" alt="Total Invoice vs Payments Over Time" src="https://github.com/user-attachments/assets/7b72abb1-59a6-4b7a-9d93-7adae12d9595">
 
 
 
