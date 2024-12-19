@@ -58,61 +58,56 @@ As a next step started analysing payment trends, residuals and stationarity, etc
 <img width="291" alt="ACF and PACF" src="https://github.com/user-attachments/assets/444d9116-fb16-494f-8271-70a89afdadee">
 
 
-Data Modeling
+#### Data Modeling
 
-Payment Modeling
+1. XGBoost Alone
 
-	Performed couple of basic modeling with ARIMA and Prophet. For this basic analysis I just used Amount and Date for a daily period.
- 	Performed another of basic modeling with ARIMA for the same features with 12 month period.
+Initially, XGBoost was used for supplier invoice forecasting, but its RMSE of 8741.36 indicated poor performance. The model struggled with sequential patterns and seasonality, highlighting the limitations of using XGBoost alone for time-series forecasting.
 
-Supplier Specific Invoice Forecasting
+2. Prophet
 
-	Based on Supplier Invoice Amount distribution noticed that Supplier 9 with hight trends and Supplier 6 with less trend or seasonal comparatively. 
- 	Created 2 different data frame for each supplier.
-  	For supplier 9, basic modeling using applied XGBoost and Prophet and optimzed Prophet with additional features like moving average and relative indexes. 
-   	For Supplier 6, tried modeling using SARIMAX and also tried Grid Search CV type (as SARIMAX is not supported using Grid Search we will have to build one)
+Using Prophet without seasonality yielded a significantly lower RMSE of 1193.04. Incorporating quarterly seasonality further reduced RMSE to 272.44, indicating Prophet’s strength in capturing recurring patterns. However, residual errors suggested unmodeled complexities.
+
+3. SARIMAX + LSTM
+
+This approach combined SARIMAX for baseline forecasting with LSTM to model residuals. While the RMSE improved to 51.48, residual analysis revealed misaligned forecasts, heavy tails, and unmodeled non-linear patterns, making the model insufficient for extreme variations.
+
+4. Prophet + LSTM
+
+Replacing SARIMAX with Prophet for baseline predictions resulted in an improved RMSE of 49.67, but residual errors and P-ACF analysis still indicated significant spikes and seasonal gaps, hinting at potential unmodeled seasonality.
+
+5. Prophet + ARIMA + LSTM
+
+Adding ARIMA (seasonal parameters: 2,0,0) to Prophet + LSTM reduced short-term errors. Test RMSE was 89.86, and for the next 20 days, RMSE dropped to 7.75. However, overfitting became apparent during training.
+
+6. Fine-Tuning and Exponential Smoothing
+
+To mitigate overfitting, exponential smoothing and additional LSTM layers were introduced. While the test RMSE decreased to 6.92, the RMSE for the next 20 days rose to 154.73, signaling a need for further adjustments in handling future residuals.
+
+7. Fine-Tuning and Adding Weights
+
+The final model incorporated XGBoost and Ridge Regressors, removing LSTM to reduce complexity. Weight adjustments optimized the hybrid approach. Results:
+	•	Meta-Model RMSE for Train Set: 4.71
+	•	Meta-Model RMSE for Test Set: 5.81
+	•	Meta-Model RMSE for Next 20 Days: 12.27
+With no overfitting or bias and closely matching forecast variance (1900.22) with actual variance (1906.80), this approach provided robust generalization.
 
 
 #### Results
 
-**Supplier 9 - Forecasting - No Grid Search CV applied**
+Model Performance Summary
 
-**Basic Modeling** 
+1.	Baseline Models: XGBoost alone performed poorly, while Prophet with seasonality showed promise.
+2.	Hybrid Models: Combinations of SARIMAX, LSTM, ARIMA, and Prophet progressively improved accuracy, reducing residual errors but introduced overfitting and misalignment in some cases.
+3.	Fine-Tuned Meta-Model: The final hybrid approach, using XGBoost, Ridge Regression, ARIMA and Prophet, delivered the best performance with excellent generalization and reduced overfitting. RMSE for test and next 20 days was 5.81 and 12.27, respectively. 
 
-XGBoost - RSME: 8741.365078169816
-
-Prophet - RMSE: 1193.040209585796
-
-<img width="586" alt="Basic Prophet" src="https://github.com/user-attachments/assets/7e824e4b-e67c-4f63-997e-c4b82e0396ed">
-
-
-**Optimized Modeling**
-
-Prophet - RMSE: 272.4380126809856
-
-<img width="606" alt="Optimized Prophet" src="https://github.com/user-attachments/assets/b68d8e39-9794-4d6b-a454-9503e0915e2d">
-
-
-
-**Supplier 6 - Forecasting - SARIMAX Grid Search CV **kind** applied**
-
-This forecasting requires more optimzation. Only used Invoice Amount as of now for modeling. Based on that below are the best parameters and RSME
-
-<img width="584" alt="SARIMAX Wrapper" src="https://github.com/user-attachments/assets/3c99a884-b901-45d2-a70c-03525c886a21">
-
-
-Best Parameters: {'diff': True, 'order': (1, 1, 1), 'seasonal_diff': True, 'seasonal_order': (1, 1, 1, 7)}
-Test RMSE: 308.0244282758301
-
-<img width="570" alt="SARIMAX Test vs Forecast" src="https://github.com/user-attachments/assets/5ca21ed7-3f3a-42e6-9d17-5011ccc1e63d">
-
-
+	There by concludidng that the supplier invoice forecasting model evolved significantly through iterative improvements, with the final hybrid approach achieving robust results. However, the next 20-day forecast still requires refinement.
 
 #### Next steps
-1) Optimizing supplier specific forecasting using SARIMAX by introducing moving averages and other factors.
-2) Explore Supplier Payment forecasting using SARIMAX and optimizing Prophet model.
-3) Improve model accuracy using RSME or MAE and avoid over fitting.
-4) Use Validation set and explore the optimzed forecasting models for Supplier Invoices and Payments.
+1) Improve Forecasting little bit more
+2) Appluy similar methodology followed for Supplier invoice Forecasting for Supplier Payment Forecasting and Supplier Invoice Aging
+3) Involve real world objects like cost center, funds, projects kind of tags into the modeling. 
+
 
 #### Outline of project
 
