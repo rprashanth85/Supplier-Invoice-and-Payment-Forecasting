@@ -128,7 +128,9 @@ Model Performance Summary
 
 #### Outline of project
 
-[Initial Report and EDA.ipynb](https://github.com/rprashanth85/Supplier-Invoice-and-Payment-Forecasting)
+[Initial Report and EDA.ipynb](https://github.com/rprashanth85/Supplier-Invoice-and-Payment-Forecasting/blob/main/Initial%20Report%20and%20EDA.ipynb)
+
+[Forecasting and Fine Tuning.ipynb](https://github.com/rprashanth85/Supplier-Invoice-and-Payment-Forecasting/blob/main/Forecasting%20and%20Fine%20Tuning.ipynb)
 
 
 ##### Contact and Further Information
