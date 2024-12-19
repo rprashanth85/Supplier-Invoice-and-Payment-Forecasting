@@ -60,6 +60,13 @@ As a next step started analysing payment trends, residuals and stationarity, etc
 
 #### Data Modeling
 
+Reading the paper by Agarwal, P. (2024). Enhancing Financial Forecasting in ERP Systems using XGBoost: A [Robust Sales Prediction Model] 
+(https://www.atlantis-press.com/proceedings/icetsbp-24/126004216?utm_source=chatgpt.com)
+
+This study presents a robust sales prediction model utilizing XGBoost to enhance financial forecasting within ERP systems. The model achieved a training accuracy of 99.90% and a test accuracy of 97.20%, demonstrating XGBoost’s effectiveness in improving ERP financial forecasts.
+
+Following the study I started exploring XGBoost ensemble other models. In each step below I have updated the model based on findings.
+
 1. XGBoost 
 
 Initially, XGBoost was used for supplier invoice forecasting, but its accuracy of 8741.36 indicated poor performance. The model struggled with sequential patterns and seasonality, highlighting the limitations of using XGBoost alone for time-series forecasting.
