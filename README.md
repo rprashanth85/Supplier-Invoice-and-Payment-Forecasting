@@ -60,24 +60,24 @@ As a next step started analysing payment trends, residuals and stationarity, etc
 
 #### Data Modeling
 
-1. XGBoost Alone
+1. XGBoost 
 
-Initially, XGBoost was used for supplier invoice forecasting, but its RMSE of 8741.36 indicated poor performance. The model struggled with sequential patterns and seasonality, highlighting the limitations of using XGBoost alone for time-series forecasting.
+Initially, XGBoost was used for supplier invoice forecasting, but its accuracy of 8741.36 indicated poor performance. The model struggled with sequential patterns and seasonality, highlighting the limitations of using XGBoost alone for time-series forecasting.
 
 2. Prophet
 
-Using Prophet without seasonality yielded a significantly lower RMSE of 1193.04. Incorporating quarterly seasonality further reduced RMSE to 272.44, indicating Prophet’s strength in capturing recurring patterns. However, residual errors suggested unmodeled complexities.
+Using Prophet without seasonality yielded a significantly lower accuracy of 1193.04. Incorporating quarterly seasonality further reduced RMSE to 272.44, indicating Prophet’s strength in capturing recurring patterns. However, residual errors suggested unmodeled complexities.
 
 <img width="606" alt="Optimized Prophet" src="https://github.com/user-attachments/assets/14c7739c-08a7-4b33-a018-63176ba0445f" />
 
 
 3. SARIMAX + LSTM
 
-This approach combined SARIMAX for baseline forecasting with LSTM to model residuals. While the RMSE improved to 51.48, residual analysis revealed misaligned forecasts, heavy tails, and unmodeled non-linear patterns, making the model insufficient for extreme variations.
+This approach combined SARIMAX for baseline forecasting with LSTM to model residuals. While the accuracy improved to 51.48, residual analysis revealed misaligned forecasts, heavy tails, and unmodeled non-linear patterns, making the model insufficient for extreme variations.
 
 4. Prophet + LSTM
 
-Replacing SARIMAX with Prophet for baseline predictions resulted in an improved RMSE of 49.67, but residual errors and P-ACF analysis still indicated significant spikes and seasonal gaps, hinting at potential unmodeled seasonality.
+Replacing SARIMAX with Prophet for baseline predictions resulted in an improved accuracy of 49.67, but residual errors and P-ACF analysis still indicated significant spikes and seasonal gaps, hinting at potential unmodeled seasonality.
 
 ![Prophet + LSTM](https://github.com/user-attachments/assets/a798939c-8688-4d6c-9573-ecba08d12c66)
 
@@ -87,14 +87,14 @@ Replacing SARIMAX with Prophet for baseline predictions resulted in an improved 
 
 5. Prophet + ARIMA + LSTM
 
-Adding ARIMA (seasonal parameters: 2,0,0) to Prophet + LSTM reduced short-term errors. Test RMSE was 89.86, and for the next 20 days, RMSE dropped to 7.75. However, overfitting became apparent during training.
+Adding ARIMA (seasonal parameters: 2,0,0) to Prophet + LSTM reduced short-term errors. Test accuracy was 89.86, and for the next 20 days, accuracy dropped to 7.75. However, overfitting became apparent during training.
 
 ![Prophet + ARIMA + LSTM](https://github.com/user-attachments/assets/4437de6f-95b5-414c-bd0d-94457a9147ff)
 
 
 6. Fine-Tuning and Exponential Smoothing
 
-To mitigate overfitting, exponential smoothing and additional LSTM layers were introduced. While the test RMSE decreased to 6.92, the RMSE for the next 20 days rose to 154.73, signaling a need for further adjustments in handling future residuals.
+To mitigate overfitting, exponential smoothing and additional LSTM layers were introduced. While the test accuracy decreased to 6.92, the accuracy for the next 20 days rose to 154.73, signaling a need for further adjustments in handling future residuals.
 
 ![Prophet + ARIMA + LSTM + Exponential Smoothing](https://github.com/user-attachments/assets/d271586a-d511-498d-be07-2f6ee2e68c06)
 
@@ -102,9 +102,9 @@ To mitigate overfitting, exponential smoothing and additional LSTM layers were i
 7. Fine-Tuning and Adding Weights
 
 The final model incorporated XGBoost and Ridge Regressors, removing LSTM to reduce complexity. Weight adjustments optimized the hybrid approach. Results:
-	•	Meta-Model RMSE for Train Set: 4.71
-	•	Meta-Model RMSE for Test Set: 5.81
-	•	Meta-Model RMSE for Next 20 Days: 12.27
+	•	Meta-Model accuracy for Train Set: 4.71
+	•	Meta-Model accuracy for Test Set: 5.81
+	•	Meta-Model accuracy for Next 20 Days: 12.27
 With no overfitting or bias and closely matching forecast variance (1900.22) with actual variance (1906.80), this approach provided robust generalization.
 
 ![Prophet+ARIMA+XGBoost+Ridge](https://github.com/user-attachments/assets/2baf3de8-a166-400c-a9f2-1c726b6ac291)
@@ -112,7 +112,7 @@ With no overfitting or bias and closely matching forecast variance (1900.22) wit
 
 #### Note on Residuals and Accuracy
 
-Throughout the modeling process, RMSE was used as the key metric to measure the accuracy of all models. After experimenting with hybrid models like Prophet + LSTM, I realized the critical importance of residuals in improving predictions. This understanding led to the integration of ARIMA and XGBoost to model residuals effectively, significantly enhancing forecast accuracy.
+Throughout the modeling process, RMSE (Root Mean Squared Error) was used as the key metric to measure the accuracy of all models. After experimenting with hybrid models like Prophet + LSTM, I realized the critical importance of residuals in improving predictions. This understanding led to the integration of Ridge, ARIMA and XGBoost to model residuals effectively, significantly enhancing forecast accuracy.
 
 
 #### Results
