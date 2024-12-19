@@ -110,6 +110,11 @@ With no overfitting or bias and closely matching forecast variance (1900.22) wit
 ![Prophet+ARIMA+XGBoost+Ridge](https://github.com/user-attachments/assets/2baf3de8-a166-400c-a9f2-1c726b6ac291)
 
 
+#### Note on Residuals and Accuracy
+
+Throughout the modeling process, RMSE was used as the key metric to measure the accuracy of all models. After experimenting with hybrid models like Prophet + LSTM, I realized the critical importance of residuals in improving predictions. This understanding led to the integration of ARIMA and XGBoost to model residuals effectively, significantly enhancing forecast accuracy.
+
+
 #### Results
 
 Model Performance Summary
